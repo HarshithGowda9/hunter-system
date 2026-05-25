@@ -1,0 +1,10 @@
+# Development
+.env
+hunter.db
+__pycache__/
+*.pyc
+*.pyo
+venv/
+.venv/
+.DS_Store
+.idea/

@@ -2,6 +2,7 @@ from sqlmodel import SQLModel, Field, create_engine, Session
 from typing import Optional
 from datetime import datetime
 from sqlalchemy import Column, Date
+import os
 
 
 # Define the HabitLog model for the database
@@ -42,8 +43,18 @@ class FitnessStats(SQLModel, table=True):
     breathing_done: bool = False
 
 
-# SQLite engine - creates hunter.db in the current directory    
-engine = create_engine("sqlite:///hunter.db", echo=True)
+# Database configuration - supports both SQLite and PostgreSQL
+DATABASE_URL = os.getenv("DATABASE_URL")
+
+if DATABASE_URL:
+    # PostgreSQL for production (Render)
+    if DATABASE_URL.startswith("postgres://"):
+        # Handle Render's postgres:// -> postgresql:// change
+        DATABASE_URL = DATABASE_URL.replace("postgres://", "postgresql://", 1)
+    engine = create_engine(DATABASE_URL, echo=True, pool_pre_ping=True)
+else:
+    # SQLite for local development
+    engine = create_engine("sqlite:///hunter.db", echo=True)
 
 def create_db():
     SQLModel.metadata.create_all(engine)

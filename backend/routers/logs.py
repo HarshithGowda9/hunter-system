@@ -1,7 +1,7 @@
 from fastapi import APIRouter, Depends, HTTPException
 from sqlmodel import Session, select
 from datetime import datetime, timedelta
-from models.database import DailyHunterLog, HunterStats, get_session
+from backend.models.database import DailyHunterLog, HunterStats, get_session
 
 router = APIRouter(prefix="/logs", tags=["Daily Logs"])
 

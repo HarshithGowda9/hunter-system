@@ -2,7 +2,7 @@ from fastapi import APIRouter, Depends, HTTPException
 from sqlmodel import Session, select
 from sqlalchemy import desc
 from datetime import datetime
-from models.database import FitnessStats, get_session
+from backend.models.database import FitnessStats, get_session
 
 router = APIRouter(prefix='/fitness', tags=["Fitness"])
 

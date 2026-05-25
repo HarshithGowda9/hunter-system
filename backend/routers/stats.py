@@ -1,6 +1,6 @@
 from fastapi import APIRouter, Depends, HTTPException
 from sqlmodel import Session, select
-from models.database import HunterStats, get_session
+from backend.models.database import HunterStats, get_session
 
 
 router = APIRouter(prefix="/stats", tags=["Hunter Stats"])

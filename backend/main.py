@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from models.database import create_db
-from routers import logs, stats, fitness
+from backend.models.database import create_db
+from backend.routers import logs, stats, fitness
 import os
 
 

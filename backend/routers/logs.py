@@ -1,6 +1,7 @@
 from fastapi import APIRouter, Depends, HTTPException
 from sqlmodel import Session, select
 from datetime import datetime, timedelta
+from typing import Optional
 from backend.models.database import DailyHunterLog, HunterStats, get_session
 
 router = APIRouter(prefix="/logs", tags=["Daily Logs"])
@@ -67,6 +68,6 @@ def get_logs(session: Session = Depends(get_session)):
 
 
 # Get today's log
-@router.get("/today", response_model=DailyHunterLog)
+@router.get("/today", response_model=Optional[DailyHunterLog])
 def get_today(session: Session = Depends(get_session)):
     return session.exec(select(DailyHunterLog).where(DailyHunterLog.log_date == datetime.today().date())).first()

@@ -12,7 +12,7 @@ class HunterLog(BaseModel):
     sense_thinking: bool = False
     sense_planning: bool = False
     shadow_time: bool = False
-    journal: str
+    journal: str = ""
 
 
     class Config:

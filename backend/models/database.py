@@ -15,9 +15,9 @@ class DailyHunterLog(SQLModel, table=True):
     sense_thinking: bool = False
     sense_planning: bool = False
     shadow_time: bool = False
-    journal: str
-    habits_checked: int
-    cleared: bool
+    journal: str = ""
+    habits_checked: int = 0
+    cleared: bool = False
     xp_earned: int = 0
 
 # Define the HunterStats model for the database
